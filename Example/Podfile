@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'JUNSON_Example' do
+  pod 'JUNSON', :path => '../'
+
+  target 'JUNSON_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
