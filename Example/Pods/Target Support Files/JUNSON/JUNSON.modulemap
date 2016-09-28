@@ -1,0 +1,6 @@
+framework module JUNSON {
+  umbrella header "JUNSON-umbrella.h"
+
+  export *
+  module * { export * }
+}
