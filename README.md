@@ -43,7 +43,7 @@ let junson = JUNSON(data: rawValue)
 
 ```swift
 Alamofire.request("https://foo.bar").responseJSON { response in
-	let junson = JUN(object:response.result.value!)
+	let junson = JUNSON(object:response.result.value!)
 }
 ```
 
