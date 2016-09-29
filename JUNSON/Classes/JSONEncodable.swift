@@ -8,35 +8,35 @@
 
 import Foundation
 
-protocol JSONEncodable {
+public protocol JSONEncodable {
     func encode() -> Any?
 }
 
 
 extension String: JSONEncodable {
     
-    func encode() -> Any? {
+    public func encode() -> Any? {
         return self
     }
 }
 
 extension Double: JSONEncodable {
     
-    func encode() -> Any? {
+    public func encode() -> Any? {
         return self
     }
 }
 
 extension Float: JSONEncodable {
     
-    func encode() -> Any? {
+    public func encode() -> Any? {
         return self
     }
 }
 
 extension Int: JSONEncodable {
     
-    func encode() -> Any? {
+    public func encode() -> Any? {
         return self
     }
 }
