@@ -13,11 +13,11 @@
 		4ED8C7F93EF788CF78285566A3E08F82 /* Pods-JUNSON_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B5A6FC911FFBAFCC0B1CF1B9E6B60E4 /* Pods-JUNSON_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5D6C893CFDB880565AFFFF55E8B06DFD /* Pods-JUNSON_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E2253C60E47DD660EBCEC441CC054B /* Pods-JUNSON_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5D78C4069128C0DF79D83A6634DC6694 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		63945C381D9CE3F0005CBA27 /* JSONTransformable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63945C371D9CE3F0005CBA27 /* JSONTransformable.swift */; };
-		6C3B473536ECDB3CB12F1537024F2548 /* JSONEncodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055072FC2D7D90227D1AAFC44307D9FF /* JSONEncodable.swift */; };
+		63945C381D9CE3F0005CBA27 /* JUNSONTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63945C371D9CE3F0005CBA27 /* JUNSONTransformer.swift */; };
+		6C3B473536ECDB3CB12F1537024F2548 /* JUNSONEncodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055072FC2D7D90227D1AAFC44307D9FF /* JUNSONEncodable.swift */; };
 		9124E528B5EE8B92376765246DF2FE62 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
 		93C15878B362832A01B82BAE612406B3 /* JUNSON-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A644D1B916F6F2AAB3C3C7B935CCC606 /* JUNSON-dummy.m */; };
-		AAD5FE04FDC1DF3C9E83464F3D815D17 /* JSONDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232256DF766D150264988C44007E0819 /* JSONDecodable.swift */; };
+		AAD5FE04FDC1DF3C9E83464F3D815D17 /* JUNSONDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232256DF766D150264988C44007E0819 /* JUNSONDecodable.swift */; };
 		D5C068E81F6C674A9AFFE28507C2888D /* Pods-JUNSON_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA404C94A6CE4B741DE2CF8C7B8493F /* Pods-JUNSON_Tests-dummy.m */; };
 		F50230F637D716AFC43B57F2313A466F /* JUNSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E234905FFE7677857695AD931752EFF /* JUNSON.swift */; };
 		FECD1FD3728213B580C8C308DEE5CE4B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
@@ -35,10 +35,10 @@
 
 /* Begin PBXFileReference section */
 		03B36D6B2CDF576C8C7921AAE4BE171C /* JUNSON-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JUNSON-umbrella.h"; sourceTree = "<group>"; };
-		055072FC2D7D90227D1AAFC44307D9FF /* JSONEncodable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JSONEncodable.swift; sourceTree = "<group>"; };
+		055072FC2D7D90227D1AAFC44307D9FF /* JUNSONEncodable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JUNSONEncodable.swift; sourceTree = "<group>"; };
 		0B5A6FC911FFBAFCC0B1CF1B9E6B60E4 /* Pods-JUNSON_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-JUNSON_Example-umbrella.h"; sourceTree = "<group>"; };
 		15B50E2814D76E5E00AAFCA3AA7746EE /* Pods-JUNSON_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JUNSON_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		232256DF766D150264988C44007E0819 /* JSONDecodable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JSONDecodable.swift; sourceTree = "<group>"; };
+		232256DF766D150264988C44007E0819 /* JUNSONDecodable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JUNSONDecodable.swift; sourceTree = "<group>"; };
 		253D2EDBDA10E162FFC2F833F926FB3C /* JUNSON-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JUNSON-prefix.pch"; sourceTree = "<group>"; };
 		26BF3AD5CE447DF6F80EB994D491AB26 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27142EF7F09C0436FE318E7FBB49F488 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -48,7 +48,7 @@
 		46E90BE896AA2954CD37A1D254F13502 /* Pods-JUNSON_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-JUNSON_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		5A97C6B1277B3BF887BE70B7EEA389B9 /* Pods-JUNSON_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-JUNSON_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		5C6AC0D22F42FDDCC092B80BFF6FE310 /* Pods-JUNSON_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JUNSON_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		63945C371D9CE3F0005CBA27 /* JSONTransformable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONTransformable.swift; sourceTree = "<group>"; };
+		63945C371D9CE3F0005CBA27 /* JUNSONTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JUNSONTransformer.swift; sourceTree = "<group>"; };
 		6E234905FFE7677857695AD931752EFF /* JUNSON.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JUNSON.swift; sourceTree = "<group>"; };
 		7ADD50182F8D06DAED4D965ACB4DD0D5 /* Pods-JUNSON_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-JUNSON_Tests-resources.sh"; sourceTree = "<group>"; };
 		7CE0757D49D63E86CA4268EF7B4FE418 /* Pods-JUNSON_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JUNSON_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -227,9 +227,9 @@
 			children = (
 				6E234905FFE7677857695AD931752EFF /* JUNSON.swift */,
 				AFB8EA456BD13E1CB20CC294272D6786 /* JUNSONError.swift */,
-				232256DF766D150264988C44007E0819 /* JSONDecodable.swift */,
-				055072FC2D7D90227D1AAFC44307D9FF /* JSONEncodable.swift */,
-				63945C371D9CE3F0005CBA27 /* JSONTransformable.swift */,
+				232256DF766D150264988C44007E0819 /* JUNSONDecodable.swift */,
+				055072FC2D7D90227D1AAFC44307D9FF /* JUNSONEncodable.swift */,
+				63945C371D9CE3F0005CBA27 /* JUNSONTransformer.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -365,11 +365,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AAD5FE04FDC1DF3C9E83464F3D815D17 /* JSONDecodable.swift in Sources */,
-				6C3B473536ECDB3CB12F1537024F2548 /* JSONEncodable.swift in Sources */,
+				AAD5FE04FDC1DF3C9E83464F3D815D17 /* JUNSONDecodable.swift in Sources */,
+				6C3B473536ECDB3CB12F1537024F2548 /* JUNSONEncodable.swift in Sources */,
 				93C15878B362832A01B82BAE612406B3 /* JUNSON-dummy.m in Sources */,
 				F50230F637D716AFC43B57F2313A466F /* JUNSON.swift in Sources */,
-				63945C381D9CE3F0005CBA27 /* JSONTransformable.swift in Sources */,
+				63945C381D9CE3F0005CBA27 /* JUNSONTransformer.swift in Sources */,
 				2788258DB038E252DB0571BDE2D62A2F /* JUNSONError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -6,19 +6,19 @@
 //
 //
 
-public protocol JSONDecodeDefaultValuable: JSONDecodable {
+public protocol JSONDecodeDefaultValuable: JUNSONDecodable {
     static var defaultValue: Self { get }
 }
 
-public protocol JSONDecodable {
+public protocol JUNSONDecodable {
     
-    static func decode(json: JUNSON) -> Self?
+    static func decode(junson: JUNSONType) -> Self?
 }
 
 extension String: JSONDecodeDefaultValuable {
     
-    public static func decode(json: JUNSON) -> String? {
-        return json.object as? String
+    public static func decode(junson: JUNSONType) -> String? {
+        return junson.object as? String
     }
     
     public static var defaultValue: String {
@@ -28,8 +28,8 @@ extension String: JSONDecodeDefaultValuable {
 
 extension Double: JSONDecodeDefaultValuable {
     
-    public static func decode(json: JUNSON) -> Double? {
-        return json.object as? Double
+    public static func decode(junson: JUNSONType) -> Double? {
+        return junson.object as? Double
     }
     
     public static var defaultValue: Double {
@@ -39,8 +39,8 @@ extension Double: JSONDecodeDefaultValuable {
 
 extension Float: JSONDecodeDefaultValuable {
     
-    public static func decode(json: JUNSON) -> Float? {
-        return json.object as? Float
+    public static func decode(junson: JUNSONType) -> Float? {
+        return junson.object as? Float
     }
     
     public static var defaultValue: Float {
@@ -50,8 +50,8 @@ extension Float: JSONDecodeDefaultValuable {
 
 extension Int: JSONDecodeDefaultValuable {
     
-    public static func decode(json: JUNSON) -> Int? {
-        return json.object as? Int
+    public static func decode(junson: JUNSONType) -> Int? {
+        return junson.object as? Int
     }
     
     public static var defaultValue: Int {

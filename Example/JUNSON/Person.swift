@@ -8,34 +8,44 @@
 
 import JUNSON
 
-struct Person: JSONDecodeDefaultValuable,JSONEncodable {
+struct Person: JSONDecodeDefaultValuable,JUNSONEncodable {
     
     let name: String
     let height: String
     let mass: String
+    let createdDate: Date?
     
-    static func decode(json: JUNSON) -> Person? {
+    static func decode(junson json: JUNSONType) -> Person? {
         let normal = json.asNormal
         
-        let dateTransform = JSONTransform<String,Date>({ (string) -> Date? in
+        let dateTransform = JUNSONTransformer<String,Date>({ (string) throws -> Date in
             return Date()
         })
         
-        let created = normal["created"].asOptional.decode(trans: dateTransform)
         return Person(name: normal.decode(key: "name"),
                       height: normal.decode(key: "height"),
-                      mass: normal.decode(key: "mass"))
+                      mass: normal.decode(key: "mass"),
+                      createdDate: normal.asOptional.decode(key: "created", transform: dateTransform))
     }
     
     static var defaultValue: Person {
-        return Person(name: "", height: "", mass: "")
+        return Person(name: "", height: "", mass: "",createdDate: nil)
     }
     
     func encode() -> Any? {
         return ["name":name,"height":height,"mass":mass]
     }
     
-    let transform = JSONTransform<String,Date> { string -> Date in
+    let transform = JUNSONTransformer<String,Date> { string -> Date in
         return Date()
+    }
+}
+
+class DateTransformer: JUNSONTransformer<String,Date> {
+    
+    init() {
+        super.init({(string) throws -> Date in
+            return Date()
+        })
     }
 }

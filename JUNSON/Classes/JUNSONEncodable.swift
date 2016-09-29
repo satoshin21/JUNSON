@@ -1,5 +1,5 @@
 //
-//  JSONEncodable.swift
+//  JUNSONEncodable.swift
 //  JUNSON
 //
 //  Created by Satoshi Nagasaka on 2016/09/29.
@@ -8,33 +8,33 @@
 
 import Foundation
 
-public protocol JSONEncodable {
+public protocol JUNSONEncodable {
     func encode() -> Any?
 }
 
 
-extension String: JSONEncodable {
+extension String: JUNSONEncodable {
     
     public func encode() -> Any? {
         return self
     }
 }
 
-extension Double: JSONEncodable {
+extension Double: JUNSONEncodable {
     
     public func encode() -> Any? {
         return self
     }
 }
 
-extension Float: JSONEncodable {
+extension Float: JUNSONEncodable {
     
     public func encode() -> Any? {
         return self
     }
 }
 
-extension Int: JSONEncodable {
+extension Int: JUNSONEncodable {
     
     public func encode() -> Any? {
         return self
