@@ -12,8 +12,14 @@ public protocol JUNSONEncodable {
     func encode() -> Any?
 }
 
-
 extension String: JUNSONEncodable {
+    
+    public func encode() -> Any? {
+        return self
+    }
+}
+
+extension NSNumber: JUNSONEncodable {
     
     public func encode() -> Any? {
         return self
@@ -40,3 +46,67 @@ extension Int: JUNSONEncodable {
         return self
     }
 }
+
+extension Int8: JUNSONEncodable {
+    
+    public func encode() -> Any? {
+        return self
+    }
+}
+
+extension Int16: JUNSONEncodable {
+    
+    public func encode() -> Any? {
+        return self
+    }
+}
+
+extension Int32: JUNSONEncodable {
+    
+    public func encode() -> Any? {
+        return self
+    }
+}
+
+extension Int64: JUNSONEncodable {
+    
+    public func encode() -> Any? {
+        return self
+    }
+}
+
+extension UInt: JUNSONEncodable {
+    
+    public func encode() -> Any? {
+        return self
+    }
+}
+
+extension UInt8: JUNSONEncodable {
+    
+    public func encode() -> Any? {
+        return self
+    }
+}
+
+extension UInt16: JUNSONEncodable {
+    
+    public func encode() -> Any? {
+        return self
+    }
+}
+
+extension UInt32: JUNSONEncodable {
+    
+    public func encode() -> Any? {
+        return self
+    }
+}
+
+extension UInt64: JUNSONEncodable {
+    
+    public func encode() -> Any? {
+        return self
+    }
+}
+
