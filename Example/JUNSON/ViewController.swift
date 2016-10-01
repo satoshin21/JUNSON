@@ -33,6 +33,7 @@ class ViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")!
         cell.textLabel?.text = persons[indexPath.row].name
+        let films = persons[indexPath.row].films
         return cell
     }
 }

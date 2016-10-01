@@ -8,12 +8,13 @@
 
 import JUNSON
 
-struct Person: JSONDecodeDefaultValuable,JUNSONEncodable {
+struct Person: JUNSONDecodable,JUNSONDefaultValue,JUNSONEncodable {
     
     let name: String
     let height: String
     let mass: String
     let createdDate: Date?
+    let films: [String]
     
     static func decode(junson json: AnyJUNSON) -> Person? {
         let normal = json.asNormal
@@ -22,14 +23,18 @@ struct Person: JSONDecodeDefaultValuable,JUNSONEncodable {
             return Date()
         })
         
+        
+        
         return Person(name: normal.decode(key: "name"),
                       height: normal.decode(key: "height"),
                       mass: normal.decode(key: "mass"),
-                      createdDate: normal.asOptional.decode(key: "created", transform: dateTransform))
+                      createdDate: normal.asOptional.decode(key: "created", transform: dateTransform),
+                      films: normal["films"].asArray.map({$0.decode()})
+                    )
     }
     
     static var defaultValue: Person {
-        return Person(name: "", height: "", mass: "",createdDate: nil)
+        return Person(name: "", height: "", mass: "",createdDate: nil,films: [])
     }
     
     func encode() -> Any? {

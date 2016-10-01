@@ -196,7 +196,7 @@ public class JSON: AnyJUNSON {
         }
     }
     
-    public func decode<T: JSONDecodeDefaultValuable>(key: JUNSONKeyPath) -> T {
+    public func decode<T: JUNSONDecodable & JUNSONDefaultValue>(key: JUNSONKeyPath) -> T {
         
         do {
             return try tryDecode(key: key)
@@ -224,7 +224,8 @@ public class JSON: AnyJUNSON {
             return []
         }
     }
-    public func decode<T: JSONDecodeDefaultValuable>(index: JUNSONIndexPath) -> T {
+    
+    public func decode<T: JUNSONDecodable & JUNSONDefaultValue>(index: JUNSONIndexPath) -> T {
         
         do {
             return try tryDecode(index: index)
@@ -253,7 +254,7 @@ public class JSON: AnyJUNSON {
         }
     }
     
-    public func decode<T: JSONDecodeDefaultValuable>() -> T {
+    public func decode<T: JUNSONDecodable & JUNSONDefaultValue>() -> T {
         
         do {
             return try tryDecode()
@@ -391,7 +392,7 @@ public class OptionalJSON: AnyJUNSON {
         }
     }
     
-    public func decode<T: JSONDecodeDefaultValuable,Z>(trans: JUNSONTransformer<T,Z>) -> Z? {
+    public func decode<T: JUNSONDecodable & JUNSONDefaultValue,Z>(trans: JUNSONTransformer<T,Z>) -> Z? {
         
         do {
             let rawValue: T = try tryDecode()
