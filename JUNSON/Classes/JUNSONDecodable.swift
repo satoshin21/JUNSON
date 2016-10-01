@@ -12,12 +12,12 @@ public protocol JSONDecodeDefaultValuable: JUNSONDecodable {
 
 public protocol JUNSONDecodable {
     
-    static func decode(junson: JUNSONType) -> Self?
+    static func decode(junson: AnyJUNSON) -> Self?
 }
 
 extension String: JSONDecodeDefaultValuable {
     
-    public static func decode(junson: JUNSONType) -> String? {
+    public static func decode(junson: AnyJUNSON) -> String? {
         return junson.object as? String
     }
     
@@ -28,7 +28,7 @@ extension String: JSONDecodeDefaultValuable {
 
 extension Double: JSONDecodeDefaultValuable {
     
-    public static func decode(junson: JUNSONType) -> Double? {
+    public static func decode(junson: AnyJUNSON) -> Double? {
         return junson.object as? Double
     }
     
@@ -39,7 +39,7 @@ extension Double: JSONDecodeDefaultValuable {
 
 extension Float: JSONDecodeDefaultValuable {
     
-    public static func decode(junson: JUNSONType) -> Float? {
+    public static func decode(junson: AnyJUNSON) -> Float? {
         return junson.object as? Float
     }
     
@@ -50,7 +50,7 @@ extension Float: JSONDecodeDefaultValuable {
 
 extension Int: JSONDecodeDefaultValuable {
     
-    public static func decode(junson: JUNSONType) -> Int? {
+    public static func decode(junson: AnyJUNSON) -> Int? {
         return junson.object as? Int
     }
     

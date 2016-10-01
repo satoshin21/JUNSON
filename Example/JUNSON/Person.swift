@@ -15,7 +15,7 @@ struct Person: JSONDecodeDefaultValuable,JUNSONEncodable {
     let mass: String
     let createdDate: Date?
     
-    static func decode(junson json: JUNSONType) -> Person? {
+    static func decode(junson json: AnyJUNSON) -> Person? {
         let normal = json.asNormal
         
         let dateTransform = JUNSONTransformer<String,Date>({ (string) throws -> Date in
