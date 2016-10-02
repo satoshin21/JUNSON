@@ -43,16 +43,16 @@ public extension AnyJUNSON {
         self.init(object)
     }
     
-    public var asNormal: JSON {
-        return JSON(object)
+    public var asNormal: JUNSON {
+        return JUNSON(object)
     }
     
-    public var asOptional: OptionalJSON {
-        return OptionalJSON(object)
+    public var asOptional: OptionalJUNSON {
+        return OptionalJUNSON(object)
     }
     
-    public var asTry: TryJSON {
-        return TryJSON(object)
+    public var asTry: TryJUNSON {
+        return TryJUNSON(object)
     }
     
     public func export(key: JUNSONKeyPath) throws -> Self {
@@ -168,11 +168,84 @@ public extension AnyJUNSON {
     }
 }
 
-public class JSON: AnyJUNSON {
+public extension AnyJUNSON {
+    
+    internal static func tryEncode(object: Any) throws -> Any {
+        
+        if let array = object as? [Any] {
+            return try tryEncode(objects: array)
+        } else if let dict = object as? [String:Any] {
+            return try tryEncode(objects: dict)
+        } else if let object = (object as? JUNSONEncodable)?.encode() {
+            if let array = object as? [Any] {
+                return try tryEncode(objects:array)
+            } else if let dict = object as? [String:Any] {
+                return try tryEncode(objects:dict)
+            } else {
+                throw JUNSONError.notDictionaryOrArray
+            }
+        }
+        
+        throw JUNSONError.noEncodableObject
+    }
+    
+    internal static func tryEncode(objects: [String:Any]) throws -> [String:Any] {
+        
+        var encoded = [String:Any]()
+        
+        for element in objects {
+            let key = element.key
+            
+            if let array = element.value as? [Any] {
+                encoded[key] = try tryEncode(objects: array)
+            } else if let dict = element.value as? [String:Any] {
+                encoded[key] = try tryEncode(objects: dict)
+            } else if let encodable = element.value as? JUNSONEncodable {
+                if let encodedElement = encodable.encode() {
+                    encoded[key] = encodedElement
+                } else {
+                    encoded[key] = NSNull()
+                }
+                encoded[key] = encodable.encode()
+            } else {
+                throw JUNSONError.noEncodableObject
+            }
+        }
+        
+        return encoded
+    }
+    
+    internal static func tryEncode(objects: [Any]) throws -> [Any] {
+        
+        var encoded = [Any]()
+        
+        for element in objects {
+            
+            if let array = element as? [Any] {
+                encoded.append(try tryEncode(objects: array))
+            } else if let dict = element as? [String:Any] {
+                encoded.append(try tryEncode(objects: dict))
+            } else if let encodable = element as? JUNSONEncodable {
+                if let encodedElement = encodable.encode() {
+                    encoded.append(encodedElement)
+                } else {
+                    encoded.append(NSNull())
+                }
+            } else {
+                throw JUNSONError.noEncodableObject
+            }
+        }
+        
+        return encoded
+    }
+    
+}
+
+public class JUNSON: AnyJUNSON {
     
     public var object: Any
     
-    public var asArray: [JSON] {
+    public var asArray: [JUNSON] {
         return toArray() ?? []
     }
     
@@ -180,19 +253,19 @@ public class JSON: AnyJUNSON {
         self.object = object
     }
     
-    public subscript(key: String) -> JSON {
+    public subscript(key: String) -> JUNSON {
         if let json = try? export(key: key) {
             return json
         } else {
-            return JSON(NSNull())
+            return JUNSON(NSNull())
         }
     }
     
-    public subscript(index: JUNSONIndexPath) -> JSON {
+    public subscript(index: JUNSONIndexPath) -> JUNSON {
         if let array = self.object as? [Any] , index >= 0 && index < array.count {
-            return JSON(array[index])
+            return JUNSON(array[index])
         } else {
-            return JSON(NSNull())
+            return JUNSON(NSNull())
         }
     }
     
@@ -205,20 +278,20 @@ public class JSON: AnyJUNSON {
         }
     }
     
-    public func decode(key: JUNSONKeyPath) -> [String:JSON] {
+    public func decode(key: JUNSONKeyPath) -> [String:JUNSON] {
         
         do {
-            let value: [String:JSON] = try tryDecode(key: key)
+            let value: [String:JUNSON] = try tryDecode(key: key)
             return value
         } catch {
             return [:]
         }
     }
     
-    public func decode(key: JUNSONKeyPath) -> [JSON] {
+    public func decode(key: JUNSONKeyPath) -> [JUNSON] {
         
         do {
-            let value: [JSON] = try tryDecode(key: key)
+            let value: [JUNSON] = try tryDecode(key: key)
             return value
         } catch {
             return []
@@ -234,20 +307,20 @@ public class JSON: AnyJUNSON {
         }
     }
     
-    public func decode(index: JUNSONIndexPath) -> [String:JSON] {
+    public func decode(index: JUNSONIndexPath) -> [String:JUNSON] {
         
         do {
-            let value: [String:JSON] = try tryDecode(index: index)
+            let value: [String:JUNSON] = try tryDecode(index: index)
             return value
         } catch {
             return [:]
         }
     }
     
-    public func decode(index: JUNSONIndexPath) -> [JSON] {
+    public func decode(index: JUNSONIndexPath) -> [JUNSON] {
         
         do {
-            let value: [JSON] = try tryDecode(index: index)
+            let value: [JUNSON] = try tryDecode(index: index)
             return value
         } catch {
             return []
@@ -263,32 +336,42 @@ public class JSON: AnyJUNSON {
         }
     }
     
-    public func decode() -> [String:JSON] {
+    public func decode() -> [String:JUNSON] {
         
         do {
-            let value: [String:JSON] = try tryDecode()
+            let value: [String:JUNSON] = try tryDecode()
             return value
         } catch {
             return [:]
         }
     }
     
-    public func decode() -> [JSON] {
+    public func decode() -> [JUNSON] {
         
         do {
-            let value: [JSON] = try tryDecode()
+            let value: [JUNSON] = try tryDecode()
             return value
         } catch {
             return []
         }
     }
+    
+    public static func encode(any: Any,writingOptions: JSONSerialization.WritingOptions = []) -> Data {
+        do  {
+            
+            let encoded: Any = try tryEncode(object: any)
+            return try JSONSerialization.data(withJSONObject: encoded, options: writingOptions)
+        } catch {
+            return Data()
+        }
+    }
 }
 
-public class OptionalJSON: AnyJUNSON {
+public class OptionalJUNSON: AnyJUNSON {
     
     public var object: Any
     
-    public var asArray: [OptionalJSON]? {
+    public var asArray: [OptionalJUNSON]? {
         return toArray()
     }
     
@@ -296,19 +379,19 @@ public class OptionalJSON: AnyJUNSON {
         self.object = object
     }
     
-    public subscript(key: String) -> OptionalJSON {
+    public subscript(key: String) -> OptionalJUNSON {
         if let json = try? export(key: key) {
             return json
         } else {
-            return OptionalJSON(NSNull())
+            return OptionalJUNSON(NSNull())
         }
     }
     
-    public subscript(index: JUNSONIndexPath) -> OptionalJSON {
+    public subscript(index: JUNSONIndexPath) -> OptionalJUNSON {
         if let array = self.object as? [Any] , index >= 0 && index < array.count {
-            return OptionalJSON(array[index])
+            return OptionalJUNSON(array[index])
         } else {
-            return OptionalJSON(NSNull())
+            return OptionalJUNSON(NSNull())
         }
     }
     
@@ -332,20 +415,20 @@ public class OptionalJSON: AnyJUNSON {
         }
     }
     
-    public func decode(key: JUNSONKeyPath) -> [OptionalJSON]? {
+    public func decode(key: JUNSONKeyPath) -> [OptionalJUNSON]? {
         
         do {
-            let value: [OptionalJSON] = try tryDecode(key: key)
+            let value: [OptionalJUNSON] = try tryDecode(key: key)
             return value
         } catch {
             return nil
         }
     }
     
-    public func decode(key: JUNSONKeyPath) -> [String:OptionalJSON]? {
+    public func decode(key: JUNSONKeyPath) -> [String:OptionalJUNSON]? {
         
         do {
-            let value: [String:OptionalJSON] = try tryDecode(key: key)
+            let value: [String:OptionalJUNSON] = try tryDecode(key: key)
             return value
         } catch {
             return nil
@@ -372,20 +455,20 @@ public class OptionalJSON: AnyJUNSON {
         }
     }
     
-    public func decode(index: JUNSONIndexPath) -> [OptionalJSON]? {
+    public func decode(index: JUNSONIndexPath) -> [OptionalJUNSON]? {
         
         do {
-            let value: [OptionalJSON] = try tryDecode(index: index)
+            let value: [OptionalJUNSON] = try tryDecode(index: index)
             return value
         } catch {
             return nil
         }
     }
     
-    public func decode(index: JUNSONIndexPath) -> [String:OptionalJSON]? {
+    public func decode(index: JUNSONIndexPath) -> [String:OptionalJUNSON]? {
         
         do {
-            let value: [String:OptionalJSON] = try tryDecode(index: index)
+            let value: [String:OptionalJUNSON] = try tryDecode(index: index)
             return value
         } catch {
             return nil
@@ -412,29 +495,38 @@ public class OptionalJSON: AnyJUNSON {
         }
     }
     
-    public func decode() -> [OptionalJSON]? {
+    public func decode() -> [OptionalJUNSON]? {
         
         do {
-            let value: [OptionalJSON] = try tryDecode()
+            let value: [OptionalJUNSON] = try tryDecode()
             return value
         } catch {
             return nil
         }
     }
     
-    public func decode() -> [String:OptionalJSON]? {
+    public func decode() -> [String:OptionalJUNSON]? {
         
         do {
-            let value: [String:OptionalJSON] = try tryDecode()
+            let value: [String:OptionalJUNSON] = try tryDecode()
             return value
         } catch {
             return nil
         }
     }
     
+    public static func encode(any: Any,writingOptions: JSONSerialization.WritingOptions = []) -> Data? {
+        do  {
+            
+            let encoded: Any = try tryEncode(object: any)
+            return try JSONSerialization.data(withJSONObject: encoded, options: writingOptions)
+        } catch {
+            return nil
+        }
+    }
 }
 
-public class TryJSON: AnyJUNSON {
+public class TryJUNSON: AnyJUNSON {
     
     public var object: Any
     
@@ -452,15 +544,15 @@ public class TryJSON: AnyJUNSON {
         return try trans.exec(raw: tryDecode(key: key))
     }
     
-    public func decode(key: JUNSONKeyPath) throws -> [TryJSON] {
+    public func decode(key: JUNSONKeyPath) throws -> [TryJUNSON] {
         
-        let value: [TryJSON] = try tryDecode(key: key)
+        let value: [TryJUNSON] = try tryDecode(key: key)
         return value
     }
     
-    public func decode(key: JUNSONKeyPath) throws -> [String:TryJSON]? {
+    public func decode(key: JUNSONKeyPath) throws -> [String:TryJUNSON]? {
         
-        let value: [String:TryJSON] = try tryDecode(key: key)
+        let value: [String:TryJUNSON] = try tryDecode(key: key)
         return value
     }
     
@@ -474,15 +566,15 @@ public class TryJSON: AnyJUNSON {
         return try trans.exec(raw: tryDecode(index: index))
     }
     
-    public func decode(index: JUNSONIndexPath) throws -> [TryJSON] {
+    public func decode(index: JUNSONIndexPath) throws -> [TryJUNSON] {
         
-        let value: [TryJSON] = try tryDecode(index: index)
+        let value: [TryJUNSON] = try tryDecode(index: index)
         return value
     }
     
-    public func decode(index: JUNSONIndexPath) throws -> [String:TryJSON]? {
+    public func decode(index: JUNSONIndexPath) throws -> [String:TryJUNSON]? {
         
-        let value: [String:TryJSON] = try tryDecode(index: index)
+        let value: [String:TryJUNSON] = try tryDecode(index: index)
         return value
     }
     
@@ -496,15 +588,20 @@ public class TryJSON: AnyJUNSON {
         return try trans.exec(raw: tryDecode())
     }
     
-    public func decode() throws -> [TryJSON] {
+    public func decode() throws -> [TryJUNSON] {
         
-        let value: [TryJSON] = try tryDecode()
+        let value: [TryJUNSON] = try tryDecode()
         return value
     }
     
-    public func decode() throws -> [String:TryJSON]? {
+    public func decode() throws -> [String:TryJUNSON]? {
         
-        let value: [String:TryJSON] = try tryDecode()
+        let value: [String:TryJUNSON] = try tryDecode()
         return value
+    }
+    
+    public static func encode(any: Any,writingOptions: JSONSerialization.WritingOptions = []) throws -> Data {
+        let jsonObject = try tryEncode(object: any)
+        return try JSONSerialization.data(withJSONObject: jsonObject, options: writingOptions)
     }
 }

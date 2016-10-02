@@ -12,6 +12,8 @@ public enum JUNSONError: Error {
     case serializationError
     case hasNoValue(String?)
     case hasNoValueForIndex(index: Int)
+    case noEncodableObject
+    case notDictionaryOrArray
 }
 
 extension JUNSONError: CustomStringConvertible {
@@ -20,13 +22,19 @@ extension JUNSONError: CustomStringConvertible {
         switch self {
         case .serializationError:
             return "serialization error"
+            
         case .hasNoValue(let key):
             if let key = key {
-                return "has no value for \"\(key)\" "
+                return "has no value for \"\(key)\""
             }
             return "has no value"
+            
         case .hasNoValueForIndex(let index):
-            return "has no value at index \"\(index)\" "
+            return "has no value at index \"\(index)\""
+        case .noEncodableObject:
+            return "elements has some no encodable objects. please implement JUNSONEncodable"
+        case .notDictionaryOrArray:
+            return "objects trying encode, is not dictionary or array."
         }
     }
 }

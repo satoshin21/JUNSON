@@ -22,8 +22,16 @@ class ViewController: UITableViewController {
             return
         }
         
-        let json = JSON(data: data)
+        let json = JUNSON(data: data)
         persons = json.asArray.map({$0.decode()})
+        
+        do {
+            let data = try TryJUNSON.encode(any: persons)
+            let string = String(data: data, encoding: .utf8)!
+            print(string)
+        } catch let e {
+            print("\(e.localizedDescription)")
+        }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
