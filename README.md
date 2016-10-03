@@ -8,21 +8,25 @@
 **JUNSON** is JSON decode and encode Library for Swift.
 
 ```swift
-let lukeSkywalker: Person = JSON(data: data)["results"][0].decode()
+// decode json to person object.
+let json = JUNSON(data: data).asDefault
+let lukeSkywalker: Person = json["results"][0].decode()
 ```
 
 ## Features
 
 JUNSON is simple library for encoding/decoding JSON for Swift.
 
-* type-safe JSON decode
-* handling decode error by try, optional, and replacing with default value. 
+* **type-safe** JSON decode.
+* encode some object types to Data object.
+* handling decode/encode error by **try-catch**, **optional**, and **replacing with default value**(like SwiftyJSON).
 
 ## Example
 
 ### Create JUNSON object with any objects
-First of all, you have to create **JUNSON** object to access json easily.  
+First of all, you have to create **JUNSON** object to access json easily.
 You can create JUNSON object with various type (like String,NSData,AnyObject).
+
 
 **String**
 
@@ -32,10 +36,10 @@ let rawValue: String = "{\"hoge\":\"hoge\",\"foo\":1,\"bar\":0.12 }"
 let junson = JUNSON(string: rawValue)
 ```
 
-**NSData**
+**Data**
 
 ```swift
-let rawData: NSData = rawValue.data(using: .utf8)!
+let rawData: Data = rawValue.data(using: .utf8)!
 let junson = JUNSON(data: rawValue)
 ```
 
