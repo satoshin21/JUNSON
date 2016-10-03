@@ -14,8 +14,9 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
-		631893DA1D9CD39200B6AB03 /* sw.json in Resources */ = {isa = PBXBuildFile; fileRef = 631893D91D9CD39200B6AB03 /* sw.json */; };
 		635CC3C41D9CD833008FC0D9 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635CC3C31D9CD833008FC0D9 /* Person.swift */; };
+		63DA95D01DA1542A00AFB97C /* star_wars.json in Resources */ = {isa = PBXBuildFile; fileRef = 63DA95CF1DA1542A00AFB97C /* star_wars.json */; };
+		63DA95D11DA157E800AFB97C /* star_wars.json in Resources */ = {isa = PBXBuildFile; fileRef = 63DA95CF1DA1542A00AFB97C /* star_wars.json */; };
 		933F05ED63E54F797BB351C5 /* Pods_JUNSON_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 408618CF22216B349F137BC2 /* Pods_JUNSON_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,8 +43,8 @@
 		607FACE51AFB9204008FA782 /* JUNSON_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JUNSON_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
-		631893D91D9CD39200B6AB03 /* sw.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sw.json; sourceTree = "<group>"; };
 		635CC3C31D9CD833008FC0D9 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		63DA95CF1DA1542A00AFB97C /* star_wars.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = star_wars.json; sourceTree = "<group>"; };
 		7F51B19B992283FDB98BDB0F /* Pods-JUNSON_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JUNSON_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JUNSON_Tests/Pods-JUNSON_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		C446EBFCD0371E413A24D8AA /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		C47D7FED4F81415F4C07B2D9 /* Pods-JUNSON_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JUNSON_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-JUNSON_Example/Pods-JUNSON_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -85,6 +86,7 @@
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
+				63DA95CF1DA1542A00AFB97C /* star_wars.json */,
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for JUNSON */,
 				607FACE81AFB9204008FA782 /* Tests */,
@@ -112,7 +114,6 @@
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
-				631893D91D9CD39200B6AB03 /* sw.json */,
 				635CC3C31D9CD833008FC0D9 /* Person.swift */,
 			);
 			name = "Example for JUNSON";
@@ -254,8 +255,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63DA95D01DA1542A00AFB97C /* star_wars.json in Resources */,
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
-				631893DA1D9CD39200B6AB03 /* sw.json in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
@@ -265,6 +266,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63DA95D11DA157E800AFB97C /* star_wars.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

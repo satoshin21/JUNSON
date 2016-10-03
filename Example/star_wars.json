@@ -1,0 +1,64 @@
+{
+    "count": 2,
+    "results": [
+                {
+                "films": [
+                          {
+                          "episode": 4,
+                          "release_date": "1977-05-25",
+                          "title": "A New Hope"
+                          },
+                          {
+                          "episode": 5,
+                          "release_date": "1980-05-17",
+                          "title": "The Empire Strikes Back"
+                          },
+                          {
+                          "episode": 6,
+                          "release_date": "1983-05-25",
+                          "title": "Return of the Jedi"
+                          },
+                          {
+                          "episode": 3,
+                          "release_date": "2005-05-19",
+                          "title": "Revenge of the Sith"
+                          },
+                          {
+                          "episode": 7,
+                          "release_date": "2015-12-11",
+                          "title": "The Force Awakens"
+                          }
+                          ],
+                "gender": "male",
+                "height": 1.72,
+                "name": "Luke Skywalker"
+                },
+                {
+                "films": [
+                          {
+                          "episode": 4,
+                          "release_date": "1977-05-25",
+                          "title": "A New Hope"
+                          },
+                          {
+                          "episode": 5,
+                          "release_date": "1980-05-17",
+                          "title": "The Empire Strikes Back"
+                          },
+                          {
+                          "episode": 6,
+                          "release_date": "1983-05-25",
+                          "title": "Return of the Jedi"
+                          }, 
+                          {
+                          "episode": 3, 
+                          "release_date": "2005-05-19", 
+                          "title": "Revenge of the Sith"
+                          }
+                          ], 
+                "gender": "male", 
+                "height": 2.03, 
+                "name": "Darth Vader"
+                }
+                ]
+}

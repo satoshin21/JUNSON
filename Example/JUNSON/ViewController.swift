@@ -17,21 +17,13 @@ class ViewController: UITableViewController {
         super.viewDidLoad()
         
         guard
-            let path = Bundle.main.path(forResource: "sw", ofType: "json"),
+            let path = Bundle.main.path(forResource: "star_wars", ofType: "json"),
             let data = try? Data(contentsOf: URL(fileURLWithPath: path)) else {
             return
         }
         
         let json = JUNSON(data: data)
-        persons = json.asArray.map({$0.decode()})
-        
-        do {
-            let data = try TryJUNSON.encode(any: persons)
-            let string = String(data: data, encoding: .utf8)!
-            print(string)
-        } catch let e {
-            print("\(e.localizedDescription)")
-        }
+        persons = json["results"].asArray.map({$0.decode()})
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

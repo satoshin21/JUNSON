@@ -189,11 +189,12 @@ public extension AnyJUNSON {
         throw JUNSONError.noEncodableObject
     }
     
-    internal static func tryEncode(objects: [String:Any]) throws -> [String:Any] {
+    internal static func tryEncode(objects: [String:Any?]) throws -> [String:Any] {
         
         var encoded = [String:Any]()
         
         for element in objects {
+            
             let key = element.key
             
             if let array = element.value as? [Any] {
@@ -201,12 +202,19 @@ public extension AnyJUNSON {
             } else if let dict = element.value as? [String:Any] {
                 encoded[key] = try tryEncode(objects: dict)
             } else if let encodable = element.value as? JUNSONEncodable {
+                
                 if let encodedElement = encodable.encode() {
-                    encoded[key] = encodedElement
+                    
+                    if let array = encodedElement as? [Any] {
+                        encoded[key] = try tryEncode(object: array)
+                    } else if let dict = encodedElement as? [String:Any] {
+                        encoded[key] = try tryEncode(object: dict)
+                    } else {
+                        encoded[key] = encodedElement
+                    }
                 } else {
                     encoded[key] = NSNull()
                 }
-                encoded[key] = encodable.encode()
             } else {
                 throw JUNSONError.noEncodableObject
             }
@@ -215,7 +223,7 @@ public extension AnyJUNSON {
         return encoded
     }
     
-    internal static func tryEncode(objects: [Any]) throws -> [Any] {
+    internal static func tryEncode(objects: [Any?]) throws -> [Any] {
         
         var encoded = [Any]()
         
@@ -226,11 +234,20 @@ public extension AnyJUNSON {
             } else if let dict = element as? [String:Any] {
                 encoded.append(try tryEncode(objects: dict))
             } else if let encodable = element as? JUNSONEncodable {
+                
                 if let encodedElement = encodable.encode() {
-                    encoded.append(encodedElement)
+                    
+                    if let array = encodedElement as? [Any] {
+                        encoded.append(try tryEncode(object: array))
+                    } else if let dict = encodedElement as? [String:Any] {
+                        encoded.append(try tryEncode(object: dict))
+                    } else {
+                        encoded.append(encodedElement)
+                    }
                 } else {
                     encoded.append(NSNull())
                 }
+                
             } else {
                 throw JUNSONError.noEncodableObject
             }
