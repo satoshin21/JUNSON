@@ -29,84 +29,90 @@ extension NSNumber: JUNSONEncodable {
 extension Double: JUNSONEncodable {
     
     public func encode() -> Any? {
-        return self
+        return NSNumber(value:self)
     }
 }
 
 extension Float: JUNSONEncodable {
     
     public func encode() -> Any? {
-        return self
+        return NSNumber(value:self)
     }
 }
 
 extension Int: JUNSONEncodable {
     
     public func encode() -> Any? {
-        return self
+        return NSNumber(value:self)
     }
 }
 
 extension Int8: JUNSONEncodable {
     
     public func encode() -> Any? {
-        return self
+        return NSNumber(value:self)
     }
 }
 
 extension Int16: JUNSONEncodable {
     
     public func encode() -> Any? {
-        return self
+        return NSNumber(value:self)
     }
 }
 
 extension Int32: JUNSONEncodable {
     
     public func encode() -> Any? {
-        return self
+        return NSNumber(value:self)
     }
 }
 
 extension Int64: JUNSONEncodable {
     
     public func encode() -> Any? {
-        return self
+        return NSNumber(value:self)
     }
 }
 
 extension UInt: JUNSONEncodable {
     
     public func encode() -> Any? {
-        return self
+        return NSNumber(value:self)
     }
 }
 
 extension UInt8: JUNSONEncodable {
     
     public func encode() -> Any? {
-        return self
+        return NSNumber(value:self)
     }
 }
 
 extension UInt16: JUNSONEncodable {
     
     public func encode() -> Any? {
-        return self
+        return NSNumber(value:self)
     }
 }
 
 extension UInt32: JUNSONEncodable {
     
     public func encode() -> Any? {
-        return self
+        return NSNumber(value:self)
     }
 }
 
 extension UInt64: JUNSONEncodable {
     
     public func encode() -> Any? {
-        return self
+        return NSNumber(value:self)
     }
 }
 
+extension NSNull: JUNSONEncodable {
+    
+    public func encode() -> Any? {
+        return NSNull()
+    }
+}

@@ -63,7 +63,9 @@ public extension AnyJUNSON {
     }
     
     internal func tryDecode<T: JUNSONDecodable>(key: JUNSONKeyPath) throws -> T {
-        
+        if key == "int64" {
+            print("key is int64")
+        }
         let value = try export(key: key).object
         if let value = T.decode(junson: Self(value)) {
             return value
@@ -163,9 +165,29 @@ public extension AnyJUNSON {
         throw JUNSONError.hasNoValue(nil)
     }
  
-    internal func toArray() -> [Self]? {
-        return (self.object as? [Any])?.map({Self($0)})
+    internal func tryEncodeArray() throws -> [Self] {
+        if let array = self.object as? [Any] {
+            return array.map({Self($0)})
+        }
+        throw JUNSONError.notArrayObject
     }
+    
+    public subscript(key: String) -> Self {
+        if let json = try? export(key: key) {
+            return json
+        } else {
+            return Self(NSNull())
+        }
+    }
+    
+    public subscript(index: JUNSONIndexPath) -> Self {
+        if let array = self.object as? [Any] , index >= 0 && index < array.count {
+            return Self(array[index])
+        } else {
+            return Self(NSNull())
+        }
+    }
+    
 }
 
 public extension AnyJUNSON {
@@ -201,6 +223,8 @@ public extension AnyJUNSON {
                 encoded[key] = try tryEncode(objects: array)
             } else if let dict = element.value as? [String:Any] {
                 encoded[key] = try tryEncode(objects: dict)
+            } else if element.value == nil {
+                encoded[key] = NSNull()
             } else if let encodable = element.value as? JUNSONEncodable {
                 
                 if let encodedElement = encodable.encode() {
@@ -233,6 +257,8 @@ public extension AnyJUNSON {
                 encoded.append(try tryEncode(objects: array))
             } else if let dict = element as? [String:Any] {
                 encoded.append(try tryEncode(objects: dict))
+            } else if element == nil {
+                encoded.append(NSNull())
             } else if let encodable = element as? JUNSONEncodable {
                 
                 if let encodedElement = encodable.encode() {
@@ -262,29 +288,18 @@ public class JUNSON: AnyJUNSON {
     
     public var object: Any
     
-    public var asArray: [JUNSON] {
-        return toArray() ?? []
-    }
-    
     required public init(_ object: Any) {
         self.object = object
     }
     
-    public subscript(key: String) -> JUNSON {
-        if let json = try? export(key: key) {
-            return json
-        } else {
-            return JUNSON(NSNull())
+    public func toArray() -> [JUNSON] {
+        do {
+            return try tryEncodeArray()
+        } catch {
+            return []
         }
     }
     
-    public subscript(index: JUNSONIndexPath) -> JUNSON {
-        if let array = self.object as? [Any] , index >= 0 && index < array.count {
-            return JUNSON(array[index])
-        } else {
-            return JUNSON(NSNull())
-        }
-    }
     
     public func decode<T: JUNSONDecodable & JUNSONDefaultValue>(key: JUNSONKeyPath) -> T {
         
@@ -373,11 +388,12 @@ public class JUNSON: AnyJUNSON {
         }
     }
     
-    public static func encode(any: Any,writingOptions: JSONSerialization.WritingOptions = []) -> Data {
+    public static func encode(any: Any,writingOptions: JSONSerialization.WritingOptions = [.prettyPrinted]) -> Data {
         do  {
             
             let encoded: Any = try tryEncode(object: any)
-            return try JSONSerialization.data(withJSONObject: encoded, options: writingOptions)
+            let data = try JSONSerialization.data(withJSONObject: encoded, options: writingOptions)
+            return data
         } catch {
             return Data()
         }
@@ -388,28 +404,14 @@ public class OptionalJUNSON: AnyJUNSON {
     
     public var object: Any
     
-    public var asArray: [OptionalJUNSON]? {
-        return toArray()
+    public func toArray() -> [OptionalJUNSON]? {
+        
+        return try? tryEncodeArray()
     }
+    
     
     required public init(_ object: Any) {
         self.object = object
-    }
-    
-    public subscript(key: String) -> OptionalJUNSON {
-        if let json = try? export(key: key) {
-            return json
-        } else {
-            return OptionalJUNSON(NSNull())
-        }
-    }
-    
-    public subscript(index: JUNSONIndexPath) -> OptionalJUNSON {
-        if let array = self.object as? [Any] , index >= 0 && index < array.count {
-            return OptionalJUNSON(array[index])
-        } else {
-            return OptionalJUNSON(NSNull())
-        }
     }
     
     public func decode<T: JUNSONDecodable>(key: JUNSONKeyPath) -> T? {
@@ -551,6 +553,10 @@ public class TryJUNSON: AnyJUNSON {
         self.object = object
     }
     
+    public func toArray() throws -> [TryJUNSON] {
+        return try tryEncodeArray()
+    }
+    
     public func decode<T: JUNSONDecodable>(key: JUNSONKeyPath) throws -> T {
         
         return try tryDecode(key: key)
@@ -589,7 +595,7 @@ public class TryJUNSON: AnyJUNSON {
         return value
     }
     
-    public func decode(index: JUNSONIndexPath) throws -> [String:TryJUNSON]? {
+    public func decode(index: JUNSONIndexPath) throws -> [String:TryJUNSON] {
         
         let value: [String:TryJUNSON] = try tryDecode(index: index)
         return value
@@ -611,7 +617,7 @@ public class TryJUNSON: AnyJUNSON {
         return value
     }
     
-    public func decode() throws -> [String:TryJUNSON]? {
+    public func decode() throws -> [String:TryJUNSON] {
         
         let value: [String:TryJUNSON] = try tryDecode()
         return value

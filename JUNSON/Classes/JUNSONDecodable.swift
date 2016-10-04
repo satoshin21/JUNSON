@@ -62,7 +62,10 @@ extension Int: JUNSONDecodable, JUNSONDefaultValue {
 extension Int8: JUNSONDecodable, JUNSONDefaultValue {
     
     public static func decode(junson: AnyJUNSON) -> Int8? {
-        return junson.object as? Int8
+        if let number = junson.object as? NSNumber {
+            return number.int8Value
+        }
+        return nil
     }
     
     public static var defaultValue: Int8 {
@@ -73,7 +76,10 @@ extension Int8: JUNSONDecodable, JUNSONDefaultValue {
 extension Int16: JUNSONDecodable, JUNSONDefaultValue {
     
     public static func decode(junson: AnyJUNSON) -> Int16? {
-        return junson.object as? Int16
+        if let number = junson.object as? NSNumber {
+            return number.int16Value
+        }
+        return nil
     }
     
     public static var defaultValue: Int16 {
@@ -84,7 +90,10 @@ extension Int16: JUNSONDecodable, JUNSONDefaultValue {
 extension Int32: JUNSONDecodable, JUNSONDefaultValue {
     
     public static func decode(junson: AnyJUNSON) -> Int32? {
-        return junson.object as? Int32
+        if let number = junson.object as? NSNumber {
+            return number.int32Value
+        }
+        return nil
     }
     
     public static var defaultValue: Int32 {
@@ -95,7 +104,10 @@ extension Int32: JUNSONDecodable, JUNSONDefaultValue {
 extension Int64: JUNSONDecodable, JUNSONDefaultValue {
     
     public static func decode(junson: AnyJUNSON) -> Int64? {
-        return junson.object as? Int64
+        if let number = junson.object as? NSNumber {
+            return number.int64Value
+        }
+        return nil
     }
     
     public static var defaultValue: Int64 {
@@ -117,7 +129,10 @@ extension UInt: JUNSONDecodable, JUNSONDefaultValue {
 extension UInt8: JUNSONDecodable, JUNSONDefaultValue {
     
     public static func decode(junson: AnyJUNSON) -> UInt8? {
-        return junson.object as? UInt8
+        if let number = junson.object as? NSNumber {
+            return number.uint8Value
+        }
+        return nil
     }
     
     public static var defaultValue: UInt8 {
@@ -128,7 +143,10 @@ extension UInt8: JUNSONDecodable, JUNSONDefaultValue {
 extension UInt16: JUNSONDecodable, JUNSONDefaultValue {
     
     public static func decode(junson: AnyJUNSON) -> UInt16? {
-        return junson.object as? UInt16
+        if let number = junson.object as? NSNumber {
+            return number.uint16Value
+        }
+        return nil
     }
     
     public static var defaultValue: UInt16 {
@@ -139,7 +157,10 @@ extension UInt16: JUNSONDecodable, JUNSONDefaultValue {
 extension UInt32: JUNSONDecodable, JUNSONDefaultValue {
     
     public static func decode(junson: AnyJUNSON) -> UInt32? {
-        return junson.object as? UInt32
+        if let number = junson.object as? NSNumber {
+            return number.uint32Value
+        }
+        return nil
     }
     
     public static var defaultValue: UInt32 {
@@ -150,7 +171,10 @@ extension UInt32: JUNSONDecodable, JUNSONDefaultValue {
 extension UInt64: JUNSONDecodable, JUNSONDefaultValue {
     
     public static func decode(junson: AnyJUNSON) -> UInt64? {
-        return junson.object as? UInt64
+        if let number = junson.object as? NSNumber {
+            return number.uint64Value
+        }
+        return nil
     }
     
     public static var defaultValue: UInt64 {

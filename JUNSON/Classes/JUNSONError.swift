@@ -14,6 +14,7 @@ public enum JUNSONError: Error {
     case hasNoValueForIndex(index: Int)
     case noEncodableObject
     case notDictionaryOrArray
+    case notArrayObject
 }
 
 extension JUNSONError: CustomStringConvertible {
@@ -35,6 +36,8 @@ extension JUNSONError: CustomStringConvertible {
             return "elements has some no encodable objects. please implement JUNSONEncodable"
         case .notDictionaryOrArray:
             return "objects trying encode, is not dictionary or array."
+        case .notArrayObject:
+            return "is not array object."
         }
     }
 }

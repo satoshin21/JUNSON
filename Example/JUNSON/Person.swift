@@ -27,7 +27,7 @@ struct Person: JUNSONDecodable,JUNSONDefaultValue,JUNSONEncodable {
         return Person(name: normal["name"].decode(),
                       height: normal["height"].decode(),
                       gender: normal.asOptional["gender"].decode(trans: genderTransformer),
-                      films: normal["films"].asArray.map({$0.decode()}))
+                      films: normal["films"].toArray().map({$0.decode()}))
     }
     
     static var defaultValue: Person {

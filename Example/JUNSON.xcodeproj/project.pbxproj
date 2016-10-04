@@ -13,10 +13,13 @@
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
-		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		607FACEC1AFB9204008FA782 /* DecodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* DecodeTests.swift */; };
 		635CC3C41D9CD833008FC0D9 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635CC3C31D9CD833008FC0D9 /* Person.swift */; };
 		63DA95D01DA1542A00AFB97C /* star_wars.json in Resources */ = {isa = PBXBuildFile; fileRef = 63DA95CF1DA1542A00AFB97C /* star_wars.json */; };
 		63DA95D11DA157E800AFB97C /* star_wars.json in Resources */ = {isa = PBXBuildFile; fileRef = 63DA95CF1DA1542A00AFB97C /* star_wars.json */; };
+		63F1704C1DA4025E0000AB0A /* decode_test.json in Resources */ = {isa = PBXBuildFile; fileRef = 63F1704A1DA3FFA20000AB0A /* decode_test.json */; };
+		63F1704E1DA4138B0000AB0A /* EncodeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F1704D1DA4138B0000AB0A /* EncodeTest.swift */; };
+		63F170501DA4196D0000AB0A /* DecodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F1704F1DA4196D0000AB0A /* DecodableTests.swift */; };
 		933F05ED63E54F797BB351C5 /* Pods_JUNSON_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 408618CF22216B349F137BC2 /* Pods_JUNSON_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,9 +45,12 @@
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* JUNSON_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JUNSON_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		607FACEB1AFB9204008FA782 /* DecodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodeTests.swift; sourceTree = "<group>"; };
 		635CC3C31D9CD833008FC0D9 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		63DA95CF1DA1542A00AFB97C /* star_wars.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = star_wars.json; sourceTree = "<group>"; };
+		63F1704A1DA3FFA20000AB0A /* decode_test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = decode_test.json; sourceTree = "<group>"; };
+		63F1704D1DA4138B0000AB0A /* EncodeTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncodeTest.swift; sourceTree = "<group>"; };
+		63F1704F1DA4196D0000AB0A /* DecodableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecodableTests.swift; sourceTree = "<group>"; };
 		7F51B19B992283FDB98BDB0F /* Pods-JUNSON_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JUNSON_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JUNSON_Tests/Pods-JUNSON_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		C446EBFCD0371E413A24D8AA /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		C47D7FED4F81415F4C07B2D9 /* Pods-JUNSON_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JUNSON_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-JUNSON_Example/Pods-JUNSON_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -86,6 +92,7 @@
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
+				63F1704A1DA3FFA20000AB0A /* decode_test.json */,
 				63DA95CF1DA1542A00AFB97C /* star_wars.json */,
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for JUNSON */,
@@ -131,7 +138,9 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				607FACEB1AFB9204008FA782 /* Tests.swift */,
+				607FACEB1AFB9204008FA782 /* DecodeTests.swift */,
+				63F1704F1DA4196D0000AB0A /* DecodableTests.swift */,
+				63F1704D1DA4138B0000AB0A /* EncodeTest.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
@@ -267,6 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				63DA95D11DA157E800AFB97C /* star_wars.json in Resources */,
+				63F1704C1DA4025E0000AB0A /* decode_test.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,7 +390,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
+				607FACEC1AFB9204008FA782 /* DecodeTests.swift in Sources */,
+				63F170501DA4196D0000AB0A /* DecodableTests.swift in Sources */,
+				63F1704E1DA4138B0000AB0A /* EncodeTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -548,6 +560,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JUNSON_Example.app/JUNSON_Example";
 			};
 			name = Debug;
 		};
@@ -564,6 +577,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JUNSON_Example.app/JUNSON_Example";
 			};
 			name = Release;
 		};

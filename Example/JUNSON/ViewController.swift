@@ -23,7 +23,7 @@ class ViewController: UITableViewController {
         }
         
         let json = JUNSON(data: data)
-        persons = json["results"].asArray.map({$0.decode()})
+        persons = json["results"].toArray().map({$0.decode()})
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
