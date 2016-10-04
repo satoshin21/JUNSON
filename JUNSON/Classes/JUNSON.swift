@@ -43,7 +43,7 @@ public extension AnyJUNSON {
         self.init(object)
     }
     
-    public var asNormal: JUNSON {
+    public var asDefault: JUNSON {
         return JUNSON(object)
     }
     

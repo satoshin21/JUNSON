@@ -51,7 +51,7 @@ struct TestObject: JUNSONDecodable,JUNSONDefaultValue,JUNSONEncodable {
     let name: String?
     
     static func decode(junson: AnyJUNSON) -> TestObject? {
-        return TestObject(id: junson.asNormal.decode(key: "id"),
+        return TestObject(id: junson.asDefault.decode(key: "id"),
                           name: junson.asOptional.decode(key: "name"))
     }
     

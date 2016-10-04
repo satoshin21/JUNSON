@@ -22,7 +22,7 @@ struct Person: JUNSONDecodable,JUNSONDefaultValue,JUNSONEncodable {
     let films: [Film]
     
     static func decode(junson json: AnyJUNSON) -> Person? {
-        let normal = json.asNormal
+        let normal = json.asDefault
         
         return Person(name: normal["name"].decode(),
                       height: normal["height"].decode(),
@@ -57,7 +57,7 @@ struct Film: JUNSONDecodable,JUNSONDefaultValue,JUNSONEncodable {
     let releaseDate: Date?
     
     static func decode(junson: AnyJUNSON) -> Film? {
-        let normal = junson.asNormal
+        let normal = junson.asDefault
         let film =  Film(episode: normal["episode"].decode(),
                     title: normal["title"].decode(),
                     releaseDate: normal.asOptional.decode(key: "release_date", transform: ReleaseDateTransformer()))
