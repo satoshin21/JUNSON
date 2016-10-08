@@ -63,9 +63,7 @@ public extension AnyJUNSON {
     }
     
     internal func tryDecode<T: JUNSONDecodable>(key: JUNSONKeyPath) throws -> T {
-        if key == "int64" {
-            print("key is int64")
-        }
+        
         let value = try export(key: key).object
         if let value = T.decode(junson: Self(value)) {
             return value
