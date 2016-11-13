@@ -7,26 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		633F85EB1DD83D840019080F /* JUNSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633F85E41DD83D840019080F /* JUNSON.swift */; };
-		633F85EC1DD83D840019080F /* JUNSONDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633F85E51DD83D840019080F /* JUNSONDecodable.swift */; };
-		633F85ED1DD83D840019080F /* JUNSONEncodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633F85E61DD83D840019080F /* JUNSONEncodable.swift */; };
-		633F85EE1DD83D840019080F /* JUNSONError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633F85E71DD83D840019080F /* JUNSONError.swift */; };
-		633F85EF1DD83D840019080F /* JUNSONTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633F85E81DD83D840019080F /* JUNSONTransformer.swift */; };
-		633F85F11DD83E050019080F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 633F85F01DD83E050019080F /* Info.plist */; };
+		633F85FC1DD83F770019080F /* JUNSON-iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 633F85FA1DD83F770019080F /* JUNSON-iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		633F86001DD840390019080F /* JUNSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633F85E41DD83D840019080F /* JUNSON.swift */; };
+		633F86011DD840390019080F /* JUNSONDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633F85E51DD83D840019080F /* JUNSONDecodable.swift */; };
+		633F86021DD840390019080F /* JUNSONEncodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633F85E61DD83D840019080F /* JUNSONEncodable.swift */; };
+		633F86031DD840390019080F /* JUNSONError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633F85E71DD83D840019080F /* JUNSONError.swift */; };
+		633F86041DD840390019080F /* JUNSONTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633F85E81DD83D840019080F /* JUNSONTransformer.swift */; };
+		633F86051DD840400019080F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 633F85F01DD83E050019080F /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		633F85D01DD83D2D0019080F /* JUNSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = JUNSON.framework; path = "/Users/SatoshiN21/Develop/iOS-OSS/JUNSON/build/Debug-iphoneos/JUNSON.framework"; sourceTree = "<absolute>"; };
 		633F85E41DD83D840019080F /* JUNSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JUNSON.swift; sourceTree = "<group>"; };
 		633F85E51DD83D840019080F /* JUNSONDecodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JUNSONDecodable.swift; sourceTree = "<group>"; };
 		633F85E61DD83D840019080F /* JUNSONEncodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JUNSONEncodable.swift; sourceTree = "<group>"; };
 		633F85E71DD83D840019080F /* JUNSONError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JUNSONError.swift; sourceTree = "<group>"; };
 		633F85E81DD83D840019080F /* JUNSONTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JUNSONTransformer.swift; sourceTree = "<group>"; };
 		633F85F01DD83E050019080F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		633F85F81DD83F770019080F /* JUNSON_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JUNSON_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		633F85FA1DD83F770019080F /* JUNSON-iOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JUNSON-iOS.h"; sourceTree = "<group>"; };
+		633F85FB1DD83F770019080F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		633F85CC1DD83D2D0019080F /* Frameworks */ = {
+		633F85F41DD83F770019080F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -40,6 +43,8 @@
 			isa = PBXGroup;
 			children = (
 				633F85DF1DD83D840019080F /* JUNSON */,
+				633F85F81DD83F770019080F /* JUNSON_iOS.framework */,
+				633F85F91DD83F770019080F /* JUNSON-iOS */,
 			);
 			sourceTree = "<group>";
 		};
@@ -72,35 +77,45 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
+		633F85F91DD83F770019080F /* JUNSON-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				633F85FA1DD83F770019080F /* JUNSON-iOS.h */,
+				633F85FB1DD83F770019080F /* Info.plist */,
+			);
+			path = "JUNSON-iOS";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		633F85CD1DD83D2D0019080F /* Headers */ = {
+		633F85F51DD83F770019080F /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				633F85FC1DD83F770019080F /* JUNSON-iOS.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		633F85CF1DD83D2D0019080F /* JUNSON */ = {
+		633F85F71DD83F770019080F /* JUNSON_iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 633F85D81DD83D2D0019080F /* Build configuration list for PBXNativeTarget "JUNSON" */;
+			buildConfigurationList = 633F85FD1DD83F770019080F /* Build configuration list for PBXNativeTarget "JUNSON_iOS" */;
 			buildPhases = (
-				633F85CB1DD83D2D0019080F /* Sources */,
-				633F85CC1DD83D2D0019080F /* Frameworks */,
-				633F85CD1DD83D2D0019080F /* Headers */,
-				633F85CE1DD83D2D0019080F /* Resources */,
+				633F85F31DD83F770019080F /* Sources */,
+				633F85F41DD83F770019080F /* Frameworks */,
+				633F85F51DD83F770019080F /* Headers */,
+				633F85F61DD83F770019080F /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = JUNSON;
-			productName = JUNSON;
-			productReference = 633F85D01DD83D2D0019080F /* JUNSON.framework */;
+			name = JUNSON_iOS;
+			productName = "JUNSON-iOS";
+			productReference = 633F85F81DD83F770019080F /* JUNSON_iOS.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -112,7 +127,7 @@
 				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Satoshi Nagasaka";
 				TargetAttributes = {
-					633F85CF1DD83D2D0019080F = {
+					633F85F71DD83F770019080F = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = BKGU87KMTC;
 						ProvisioningStyle = Automatic;
@@ -131,32 +146,32 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				633F85CF1DD83D2D0019080F /* JUNSON */,
+				633F85F71DD83F770019080F /* JUNSON_iOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		633F85CE1DD83D2D0019080F /* Resources */ = {
+		633F85F61DD83F770019080F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				633F85F11DD83E050019080F /* Info.plist in Resources */,
+				633F86051DD840400019080F /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		633F85CB1DD83D2D0019080F /* Sources */ = {
+		633F85F31DD83F770019080F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				633F85EC1DD83D840019080F /* JUNSONDecodable.swift in Sources */,
-				633F85ED1DD83D840019080F /* JUNSONEncodable.swift in Sources */,
-				633F85EB1DD83D840019080F /* JUNSON.swift in Sources */,
-				633F85EF1DD83D840019080F /* JUNSONTransformer.swift in Sources */,
-				633F85EE1DD83D840019080F /* JUNSONError.swift in Sources */,
+				633F86011DD840390019080F /* JUNSONDecodable.swift in Sources */,
+				633F86021DD840390019080F /* JUNSONEncodable.swift in Sources */,
+				633F86001DD840390019080F /* JUNSON.swift in Sources */,
+				633F86041DD840390019080F /* JUNSONTransformer.swift in Sources */,
+				633F86031DD840390019080F /* JUNSONError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,7 +277,7 @@
 			};
 			name = Release;
 		};
-		633F85D91DD83D2D0019080F /* Debug */ = {
+		633F85FE1DD83F770019080F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
@@ -271,17 +286,17 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = JUNSON/Info.plist;
+				INFOPLIST_FILE = "JUNSON-iOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = jp.hatenadiary.satoshin21.JUNSON;
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.hatenadiary.satoshin21.JUNSON-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
-		633F85DA1DD83D2D0019080F /* Release */ = {
+		633F85FF1DD83F770019080F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
@@ -290,10 +305,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = JUNSON/Info.plist;
+				INFOPLIST_FILE = "JUNSON-iOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = jp.hatenadiary.satoshin21.JUNSON;
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.hatenadiary.satoshin21.JUNSON-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
@@ -312,14 +327,13 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		633F85D81DD83D2D0019080F /* Build configuration list for PBXNativeTarget "JUNSON" */ = {
+		633F85FD1DD83F770019080F /* Build configuration list for PBXNativeTarget "JUNSON_iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				633F85D91DD83D2D0019080F /* Debug */,
-				633F85DA1DD83D2D0019080F /* Release */,
+				633F85FE1DD83F770019080F /* Debug */,
+				633F85FF1DD83F770019080F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
