@@ -188,12 +188,18 @@ Swift **3.0** , Xcode8
 
 ## Installation
 
+### Cocoapods
+
 JUNSON is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
 pod "JUNSON"
 ```
+
+### Carthage
+
+Add `github SatoshiN21/JUNSON` to your cart file. Execute carthage update to install it.
 
 ## Author
 
