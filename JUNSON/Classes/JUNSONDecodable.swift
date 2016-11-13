@@ -6,6 +6,8 @@
 //
 //
 
+import UIKit
+
 public protocol JUNSONDefaultValue {
     static var defaultValue: Self { get }
 }
